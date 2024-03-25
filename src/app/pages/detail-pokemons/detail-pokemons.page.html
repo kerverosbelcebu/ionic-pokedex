@@ -1,0 +1,62 @@
+<ion-header [translucent]="true">
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-card *ngIf="pokemon">
+    <ion-img [src]="pokemon.sprite"></ion-img>
+    <ion-card-header class="ion-text-center">
+      <ion-card-title>{{pokemon.name}}</ion-card-title>
+    </ion-card-header>
+  </ion-card>
+  <ion-grid fixed>
+    <ion-row>
+      <ion-col size="4" class="ion-text-center">
+        <ion-text color="primary">
+          <h1>Habilidades</h1>
+        </ion-text>
+      </ion-col>
+      <ion-col size="8" class="ion-text-center">
+        <ion-text *ngFor="let ability of pokemon.abilities">
+          {{ability}} <br>
+        </ion-text>
+      </ion-col>
+    </ion-row>
+
+    <ion-row *ngFor="pokemon.hiddenAbility">
+      <ion-col size="4" class="ion-text-center">
+        <ion-text color="primary">
+          <h1>{{pokemon.hiddenAbility}}</h1>
+        </ion-text>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size="4" class="ion-text-center">
+        <ion-text>
+          Peso
+        </ion-text>
+      </ion-col>
+      <ion-col size="8" class="ion-text-center">
+        <ion-text>
+          {{pokemon.weight+' kg'}}
+        </ion-text>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size="4" class="ion-text-center">
+        <ion-text>
+          Altura
+        </ion-text>
+      </ion-col>
+      <ion-col size="8" class="ion-text-center">
+        <ion-text>
+          {{pokemon.height+' m'}}
+        </ion-text>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button (click)="goBack()">
+      <ion-icon name="close-outline"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+</ion-content>
